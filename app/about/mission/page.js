@@ -1,12 +1,13 @@
 import React from "react";
-import Button from "@/app/componets/Button";
-
+import thumb from "@/public/images/flutterS.png";
+import Image from "next/image";
+ 
+ 
 const page = () => {
   return (
     <div>
       <p>this is mission page</p>
-
-      <Button />
+      <Image src={thumb} alt="this is thumbe image" />
     </div>
   );
 };
