@@ -33,7 +33,7 @@ const postPage = async ({ params }) => {
    
 
    {
-    comments.map(comment=><p>{comment.name}</p>)
+    comments.map((comment, idx)=><p key={idx}>{comment.name}</p>)
    }
    
  
