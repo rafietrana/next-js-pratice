@@ -1,6 +1,7 @@
 import getDynamicPostById from "@/app/lib/getDynamicPostById";
 import getPostComment from "@/app/lib/getPostComment";
-import React from "react";
+import React, { Suspense } from "react";
+import Comments from './../../components/Comments';
 
 // export async  function generateMetadata({params}){
 //           const {id} = params;
@@ -19,23 +20,25 @@ const postPage = async ({ params }) => {
   const postPromice = getDynamicPostById(id);
   const commentPromice = getPostComment(id);
 
-  const   [post, comments] = await Promise.all([postPromice, commentPromice]);
+
+  const post = await postPromice;
+
+//   const   [post, comments] = await Promise.all([postPromice, commentPromice]);
 
  
- console.log('alhamdulillah comment is', comments);
+//  console.log('alhamdulillah comment is', comments);
  
 
 
   return (
     <div>
-      <p>this is page component</p>
+      <p>this is page title</p>
  
    <p>{post.title} </p>
-   
+      <Suspense fallback="loading comments......">
+      <Comments promise={commentPromice}  / >
+      </Suspense>
 
-   {
-    comments.map((comment, idx)=><p key={idx}>{comment.name}</p>)
-   }
    
  
 
