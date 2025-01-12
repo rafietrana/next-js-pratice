@@ -28,6 +28,7 @@ const postPage = async ({ params }) => {
 
   return (
     <div>
+      <p>this is page component</p>
  
    <p>{post.title} </p>
    
